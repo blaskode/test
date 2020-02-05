@@ -18,6 +18,7 @@ int main(void){
 	struct Node * head = malloc(sizeof(struct Node));
 	head->num = 5;
 	head = add_first_node(head, 4);
+	head = add_first_node(head, 3);
 	print_list(head);
 	free_list(head);
 }
