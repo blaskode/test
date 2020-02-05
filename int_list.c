@@ -42,12 +42,15 @@ void print_list(LIST list){
 	}
 }
 
-void free_list(LIST list){
-	if (list->lnk == NULL){
-		free(list);
-		list = NULL;
-		return;
-	} else {
-		free_list(list->lnk);
-	}
+void free_list(struct Node* head)
+{
+   struct Node* tmp;
+
+   while (head != NULL)
+    {
+       tmp = head;
+       head = head->lnk;
+       free(tmp);
+    }
+
 }
