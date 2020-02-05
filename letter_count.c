@@ -9,13 +9,6 @@ int * count_letters(FILE * f);
 
 int main(int argc, char ** argv){
 	FILE * f = fopen(argv[1], "r");
-	//int alphabet[26] = {0};
-	//int c = tolower(getc(f));
-
-	//while(c != EOF){
-	//	alphabet[c - 97]++;
-	//	c = tolower(getc(f));
-	//}
 	int * alphabet = count_letters(f);
 	print_alphabet_count(alphabet);
 	free(alphabet);
