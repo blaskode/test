@@ -21,6 +21,7 @@ int main(void){
 	head = add_first_node(head, 3);
 	print_list(head);
 	free_list(head);
+	//not freeing everything!
 }
 
 
