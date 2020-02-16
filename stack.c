@@ -13,9 +13,14 @@ void print_list(link head);
 void delete_list(link head);
 link push_node(link head, link new_node);
 void push(link head, char ele);
+link pop(link head);
 
 int main(int argc, char** argv){
-	
+	if(argc != 2){
+		fprintf(stderr, "Wrong num of args.\n");
+		exit(EXIT_FAILURE);
+	}
+
 	int arg_len = 0;
 	for(int i = 0; argv[1][i] != '\0'; i++){
 		arg_len++;
@@ -25,7 +30,6 @@ int main(int argc, char** argv){
 	for(int i = 1; i < arg_len; i++){
 		push(head, argv[1][i]);
 	}
-
 
 	print_list(head);
 	delete_list(head);
@@ -75,8 +79,12 @@ void delete_list(link head) {
 		head = NULL;
 		return;
 	} else {
-		free(head);
-		head = NULL;
-		return;
+		if (head == NULL) {
+			return;
+		} else {
+			free(head);
+			head = NULL;
+			return;
+		}
 	}
 }
