@@ -13,7 +13,7 @@ void print_list(link head);
 void delete_list(link head);
 link push_node(link head, link new_node);
 void push(link head, char ele);
-link pop(link head);
+link pop(link * head);
 
 int main(int argc, char** argv){
 	if(argc != 2){
@@ -32,8 +32,11 @@ int main(int argc, char** argv){
 	}
 
 	print_list(head);
+	link temp = pop(&head);
+	free (temp);
+	print_list(head);
 	delete_list(head);
-	delete_list(NULL);
+	//delete_list(NULL);
 	return EXIT_SUCCESS;
 }
 
@@ -68,6 +71,17 @@ link push_node(link head, link new_node){
 void push(link head, char ele){
 	struct CharNode * temp = initialize_node(ele, NULL);
 	push_node(head, temp);
+}
+
+link pop(struct CharNode ** head){
+	if((**head).next == NULL){
+		link temp = *head;
+		(*head) = NULL;
+		return temp;
+	} else {
+		pop(&(**head).next);
+	}
+	return NULL;
 }
 
 void delete_list(link head) {
