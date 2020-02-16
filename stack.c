@@ -38,12 +38,14 @@ void print_list(link head) {
 }
 
 void delete_list(link head) {
-	if (head != NULL) {
-		free(head);
-		//following a link after the struct has been freed!
-		//I thought this was considered bad news
+	if (head->next != NULL) {
 		delete_list(head->next);
+		free(head);
+		head = NULL;
+		return;
 	} else {
+		free(head);
+		head = NULL;
 		return;
 	}
 }
