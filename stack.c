@@ -33,10 +33,14 @@ int main(int argc, char** argv){
 
 	print_list(head);
 	link temp = pop(&head);
-	free (temp);
-	print_list(head);
-	delete_list(head);
-	//delete_list(NULL);
+	while (temp != NULL){
+		printf("%c", temp->element);
+		free(temp);
+		temp = pop(&head);
+	}
+	printf("\n");
+
+	//delete_list(head);
 	return EXIT_SUCCESS;
 }
 
@@ -74,6 +78,7 @@ void push(link head, char ele){
 }
 
 link pop(struct CharNode ** head){
+	if (*head == NULL) return NULL;
 	if((**head).next == NULL){
 		link temp = *head;
 		(*head) = NULL;
@@ -87,7 +92,7 @@ void delete_list(link head) {
 	/* There are method calls after the recursive call in */
 	/* the first branch... */
 	/* So, this is not tail-recursion. */
-	if (head == NULL) return;
+	//if (head == NULL) return NULL;
 	if (head->next != NULL) {
 		delete_list(head->next);
 		free(head);
