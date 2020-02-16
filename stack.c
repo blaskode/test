@@ -14,11 +14,21 @@ link push_node(link head, link new_node);
 void push(link head, char ele);
 
 int main(void){
+	/*
 	struct CharNode * node1 = initialize_node('a', NULL);
 	struct CharNode * head = initialize_node('D', node1);
 	struct CharNode * tail = initialize_node('m', NULL);
 	push_node(head, tail);
 	push(head, 'i');
+	*/
+
+	struct CharNode * head = initialize_node('D', NULL);
+	push(head, 'a');
+	push(head, 'm');
+	push(head, 'i');
+	push(head, 'e');
+	push(head, 'n');
+
 	print_list(head);
 	delete_list(head);
 	return EXIT_SUCCESS;
