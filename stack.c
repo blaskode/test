@@ -1,3 +1,10 @@
+/*
+	This program reverses command-line input. It employs a 
+	push-down stack implemented by a linked-list. It takes one
+	argument. That argument cannot contain spaces unles the entire
+	argument is enclosed in quotes.
+*/
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
