@@ -10,13 +10,15 @@ struct CharNode {
 link initialize_node(char ele, link lnk);
 void print_list(link head);
 void delete_list(link head);
-link push(link head, link new_node);
+link push_node(link head, link new_node);
+void push(link head, char ele);
 
 int main(void){
 	struct CharNode * node1 = initialize_node('a', NULL);
 	struct CharNode * head = initialize_node('D', node1);
 	struct CharNode * tail = initialize_node('m', NULL);
-	push(head, tail);
+	push_node(head, tail);
+	push(head, 'i');
 	print_list(head);
 	delete_list(head);
 	return EXIT_SUCCESS;
@@ -30,7 +32,7 @@ link initialize_node(char ele, link lnk) {
 	return temp_node;
 }
 
-void print_list(link head) {
+void print_list(link head){
 	if (head != NULL) {
 		printf("%c", head->element);
 		print_list(head->next);
@@ -40,14 +42,19 @@ void print_list(link head) {
 	}
 }
 
-link push(link head, link new_node) {
+link push_node(link head, link new_node){
 	if (head->next != NULL) {
-		push(head->next, new_node);
+		push_node(head->next, new_node);
 		return NULL;	//this should never be reached
 	} else {
 		head->next = new_node;
 		return new_node;
 	}
+}
+
+void push(link head, char ele){
+	struct CharNode * temp = initialize_node(ele, NULL);
+	push_node(head, temp);
 }
 
 void delete_list(link head) {
