@@ -79,9 +79,8 @@ link pop(struct CharNode ** head){
 		(*head) = NULL;
 		return temp;
 	} else {
-		pop(&(**head).next);
+		return pop(&(**head).next);
 	}
-	return NULL;
 }
 
 void delete_list(link head) {
