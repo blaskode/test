@@ -33,6 +33,7 @@ int main(int argc, char** argv){
 
 	print_list(head);
 	delete_list(head);
+	delete_list(NULL);
 	return EXIT_SUCCESS;
 }
 
@@ -73,18 +74,16 @@ void delete_list(link head) {
 	/* There are method calls after the recursive call in */
 	/* the first branch... */
 	/* So, this is not tail-recursion. */
+	if (head == NULL) return;
 	if (head->next != NULL) {
 		delete_list(head->next);
 		free(head);
 		head = NULL;
 		return;
 	} else {
-		if (head == NULL) {
-			return;
-		} else {
-			free(head);
-			head = NULL;
-			return;
-		}
+		free(head);
+		head = NULL;
+		return;
 	}
 }
+
