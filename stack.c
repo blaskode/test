@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 typedef struct CharNode * link;
 struct CharNode {
@@ -13,21 +14,18 @@ void delete_list(link head);
 link push_node(link head, link new_node);
 void push(link head, char ele);
 
-int main(void){
-	/*
-	struct CharNode * node1 = initialize_node('a', NULL);
-	struct CharNode * head = initialize_node('D', node1);
-	struct CharNode * tail = initialize_node('m', NULL);
-	push_node(head, tail);
-	push(head, 'i');
-	*/
+int main(int argc, char** argv){
+	
+	int arg_len = 0;
+	for(int i = 0; argv[1][i] != '\0'; i++){
+		arg_len++;
+	}
 
-	struct CharNode * head = initialize_node('D', NULL);
-	push(head, 'a');
-	push(head, 'm');
-	push(head, 'i');
-	push(head, 'e');
-	push(head, 'n');
+	struct CharNode * head = initialize_node(argv[1][0], NULL);
+	for(int i = 1; i < arg_len; i++){
+		push(head, argv[1][i]);
+	}
+
 
 	print_list(head);
 	delete_list(head);
