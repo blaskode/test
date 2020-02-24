@@ -13,21 +13,30 @@ int main(int argc, char** argv){
     int i, j;
     i = j = 0;
     while(c != EOF){
+      //if (i > 1 || j > 1){
+        //break;
+      //}
+
       if (c == 32) {
         c = fgetc(f);
         continue;
       }
       if (c == '\n'){
         c = c - 48;
-        matrix[i][j] = c;
+        if (i < 2 || j < 2){
+          matrix[i][j] = c;
+        }
         i++;
         j = 0;
       } else {
-        c = c - 48;
+        if ( i < 2 || j < 2){
+         c = c - 48;
+        }
         matrix[i][j] = c;
         j++;
       }
       c = fgetc(f);
+      printf("%d %d\n", i, j);
     }
     int a = matrix[0][0]; 
     int b = matrix[1][1]; 
