@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void free_matrix(int ** matrix);
+void free_matrix(int ** matrix, int sz);
 
 int main(int argc, char ** argv){
   int ** matrix = malloc(2 * sizeof(int *));
@@ -43,11 +43,11 @@ int main(int argc, char ** argv){
   //for(int i = 0; i < 2; i++){
     //free(matrix[i]);
   //}
-  free_matrix(matrix);
+  free_matrix(matrix, 2);
 }
 
-void free_matrix(int ** matrix){
-  for(int i = 0; i < 2; i++){
+void free_matrix(int ** matrix, int sz){
+  for(int i = 0; i < sz; i++){
     free(matrix[i]);
   }
   free(matrix);
