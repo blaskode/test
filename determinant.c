@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 
+void free_matrix(int ** matrix);
+
 int main(int argc, char ** argv){
   int ** matrix = malloc(2 * sizeof(int *));
   matrix[0] = malloc(2 * sizeof(int));
@@ -22,15 +24,29 @@ int main(int argc, char ** argv){
     } else { //data we can use
       e = e - 49;
       matrix[i][j] = e;
-      printf("%d ", e);
-      printf("%d %d ", i, j);
+      //printf("%d ", e);
+      //printf("%d %d ", i, j);
       e = getc(f);
       j++;
     }
   }
+  int a, b, c, d;
+  a = matrix[0][0];
+  b = matrix[1][1];
+  c = matrix[0][1];
+  d = matrix[1][0];
+  int det = a*b - c*d;
+  printf("Determinant: %d\n", det);
 
   fclose(f);
 
+  //for(int i = 0; i < 2; i++){
+    //free(matrix[i]);
+  //}
+  free_matrix(matrix);
+}
+
+void free_matrix(int ** matrix){
   for(int i = 0; i < 2; i++){
     free(matrix[i]);
   }
